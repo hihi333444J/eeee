@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cloudflare Proxy UI</title>
+</head>
+<body>
+  <h1>Cloudflare Open Proxy</h1>
+  <form id="proxyForm">
+    <input type="text" id="url" placeholder="Enter target URL" size="50">
+    <button type="submit">Fetch</button>
+  </form>
+  <pre id="output"></pre>
+  <script>
+    document.getElementById('proxyForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const url = document.getElementById('url').value;
+      const resp = await fetch('holy-snow-2271.friendcodechaos.workers.dev?url=' + encodeURIComponent(url));
+      document.getElementById('output').textContent = await resp.text();
+    });
+  </script>
+</body>
+</html>
